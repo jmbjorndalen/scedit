@@ -5,11 +5,14 @@
 Dependencies (on a Ubuntu computer, on other systems you will need to find other ways of finding these) :
   python-bottle
   python-beaker
-  python-pycrotopp (on 12.04 hosts, maybe not needed on 12.10)
+  python-pycrotopp (on Ubuntu 12.04, maybe not needed on 12.10 and newer)
 
 Included in this repo:
   cork
+
+Loaded remotely:  
   ace   (javascript editor from ace.ajax.org)
+  jquery 
  
  
  NB/TODO:
@@ -102,7 +105,7 @@ def editfile_submit():
 def logfile():
     auth.req_admin()
     html = get_html_file("content/template/logfile.html")
-    cont = get_html_file("server.log")
+    cont = get_html_file("mcserver.log")
     return string.Template(html).substitute(content = cont)
 
 
