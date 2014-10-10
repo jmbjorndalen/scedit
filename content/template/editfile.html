@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Editing $fname</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+    </script>
+  </head>
+
+  <body>
+    <h1>Editing $fname</h1>
+
+<p> <a href="/edit/">Back</a>
+<p> <input type='button' onclick='submitText()' value='Save'/>
+
+
+
+<form name="editform" id="editform" action="/edit/sfile" method="POST">
+<input type="hidden" id="form_text" name="text" value="">
+<input type="hidden" id="form_fname" name="fname" value="$fname">
+</form>
+<p id="status">File is unmodified</p>
+<hr>
+<textarea class="code_input" style="min-width:600px; min-height:500px" id="edit_code" wrap="logical">
+$content
+
+</textarea>
+<hr>
+
+
+<script type="text/javascript">
+function submitText()
+{
+   var txt=document.getElementById("edit_code").value;
+   var fname=document.getElementById("form_fname").value;
+   //document.getElementById('hehe').innerHTML = "insubmit";
+
+   //document.getElementById("form_text").value = txt;
+   //document.editform.submit();
+
+   jQuery.post("/edit/sfile", { fname : fname, text : txt}, 
+      function(data, txtStatus) {
+      document.getElementById("status").innerHTML = "File is saved";
+      }
+      );
+}
+
+//document.getElementById("status").innerHTML = "readyfunc";
+
+
+
+jQuery('#edit_code').bind('input propertychange', function() {
+      document.getElementById('status').innerHTML = "NB: file is modified";
+
+      //jQuery("#yourBtnID").hide();
+
+      //if(this.value.length){
+      //  jQuery("#yourBtnID").show();
+      //}
+});
+
+//document.getElementById("status").innerHTML = "hrefunc";
+
+
+</script>
+
+  </body>
+</html>

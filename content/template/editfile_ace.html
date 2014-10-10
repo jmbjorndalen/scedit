@@ -1,0 +1,74 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Editing $fname</title>
+
+    <style type="text/css" media="screen">
+    body {
+        overflow: hidden;
+    }
+    #editor { 
+        margin: 0;
+        position: absolute;
+        top: 120;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+    </style>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+    </script>
+  </head>
+
+  <body>
+<p><b>Editing $fname</b></p>
+
+<p> <a href="/edit/">Back</a>
+<input type='button' onclick='submitText()' value='Save'/>
+</p> 
+<p id="status">File is unmodified </p>
+
+
+
+<form name="editform" id="editform" action="/edit/sfile" method="POST">
+<input type="hidden" id="form_text" name="text" value="">
+<input type="hidden" id="form_fname" name="fname" value="$fname">
+</form>
+
+<pre id="editor">$content
+</pre>
+
+
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js" type="text/javascript" charset="utf-8"></script>
+
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/twilight");
+    editor.getSession().setMode("ace/mode/javascript");
+    document.getElementById('editor').style.fontSize='18px';
+
+editor.getSession().on('change', function(e) {
+    document.getElementById("status").innerHTML = "File is modified";     
+});
+
+</script>
+
+<script type="text/javascript">
+
+function submitText()
+{
+   var txt=editor.getValue();
+   var fname=document.getElementById("form_fname").value;
+
+   jQuery.post("/edit/sfile", { fname : fname, text : txt}, 
+      function(data, txtStatus) {
+      document.getElementById("status").innerHTML = "File is saved";
+      }
+      );
+}
+
+</script>
+
+  </body>
+</html>
