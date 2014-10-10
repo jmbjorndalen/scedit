@@ -11,7 +11,7 @@ Installing and running
 ----------------------
 Playing around with it should be fairly simple. 
 
-* First, you need to edit create_auth.py to add usernames and passwords. 
+* First, you need to edit create_auth.py to add user names and passwords. 
 * Then you need to run create_auth.py to set up authentication. 
 * Then run main.py 
 
@@ -27,7 +27,7 @@ or
 
    To inspect the logfile from the server. 
 
-To use it with a live Minecraft server do the following: 
+To use it with a live Minecraft server, do the following: 
 
 * Replace the file called mcserver.log with a symbolic link to the Minecraft server's logfile.
 * Modify JSDIR in main.py to point to the directory with files you want to edit. 

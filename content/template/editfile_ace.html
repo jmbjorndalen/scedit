@@ -42,20 +42,7 @@
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js" type="text/javascript" charset="utf-8"></script>
 
-<script>
-    var editor = ace.edit("editor");
-    editor.setTheme("ace/theme/twilight");
-    editor.getSession().setMode("ace/mode/javascript");
-    document.getElementById('editor').style.fontSize='18px';
-
-editor.getSession().on('change', function(e) {
-    document.getElementById("status").innerHTML = "File is modified";     
-});
-
-</script>
-
 <script type="text/javascript">
-
 function submitText()
 {
    var txt=editor.getValue();
@@ -63,11 +50,19 @@ function submitText()
 
    jQuery.post("/edit/sfile", { fname : fname, text : txt}, 
       function(data, txtStatus) {
-      document.getElementById("status").innerHTML = "File is saved";
+         document.getElementById("status").innerHTML = "File is saved";
       }
-      );
+   );
 }
 
+var editor = ace.edit("editor");
+editor.setTheme("ace/theme/twilight");
+editor.getSession().setMode("ace/mode/javascript");
+document.getElementById('editor').style.fontSize='18px';
+
+editor.getSession().on('change', function(e) {
+   document.getElementById("status").innerHTML = "File is modified";     
+});
 </script>
 
   </body>
