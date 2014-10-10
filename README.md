@@ -9,8 +9,13 @@ aliens. Just mentioning it.
 
 Installing and running 
 ----------------------
-Playing around with it should simply be a matter of running main.py and 
-pointing your editor to one of these: 
+Playing around with it should be fairly simple. 
+
+* First, you need to edit create_auth.py to add usernames and passwords. 
+* Then you need to run create_auth.py to set up authentication. 
+* Then run main.py 
+
+Using it should simply be a matter of pointing your editor to one of these: 
 
    [http://localhost:8095/edit/](http://localhost:8095/edit/)
 
