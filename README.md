@@ -33,6 +33,10 @@ To use it with a live Minecraft server do the following:
 * Modify JSDIR in main.py to point to the directory with files you want to edit. 
 
 
+Backups
+-------
+The editor automatically creates a backup of the edited file every time you press save. The backups are 
+saved in "backups" (defined in main.py). 
 
 Ace
 --- 
